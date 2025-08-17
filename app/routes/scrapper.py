@@ -5,7 +5,7 @@ from app.scrapper import run_post_scrapper
 
 scrapper_bp = Blueprint('scrapper', __name__, url_prefix='/api')
 
-@scrapper_bp('/scrape')
+@scrapper_bp.routes('/scrape')
 def trigger_scrapper():
     try:
         run_post_scrapper()
