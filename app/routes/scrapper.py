@@ -11,4 +11,6 @@ def trigger_scrapper():
         run_post_scrapper()
         return jsonify({"message": "Scraper started successfully!"}), 200
     except Exception as e:
+        import traceback
+        traceback.print_exc()  # logs full error in Render
         return jsonify({"error": str(e)}), 500

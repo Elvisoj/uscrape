@@ -1,3 +1,4 @@
+from flask import jsonify
 from app.api.fetch import fetch
 from app.sections.post_section import PostSection
 from app.api.mail import send_email
@@ -19,9 +20,11 @@ def run_post_scrapper():
                 )
 
                 save_post(title=post.title, description=post.description, url=post.url, thumbnail=post.thumbnail)
-                print('Sending Mail....', mail_content)
                 send_email(mail_content)
+                # print('Sending Mail....', mail_content)
+                return jsonify({'message': f"✅ Post sent: {post.title} - {post.url}"})
             else:
-                print(f"✅ Skipping already sent post: {post.url}")
+                return jsonify({'message': f"✅ Skipping already sent post: {post.url}"})
+                # print(f"✅ Skipping already sent post: {post.url}")
 
             
