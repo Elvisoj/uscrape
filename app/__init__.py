@@ -16,4 +16,5 @@ def create_app():
     from app.routes.scrapper import scrapper_bp
     app.register_blueprint(scrapper_bp)
 
+    from app.models.post import SentPost  
     return app
